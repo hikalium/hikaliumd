@@ -1,9 +1,9 @@
 CXXFLAGS=-Wall -Wpedantic -std=c++1y
-SRCS=main.o
+SRCS=main.cpp
 TARGET=hikaliumd
 
 $(TARGET) : $(SRCS) Makefile
-	g++ -o $(TARGET) $(SRCS)
+	g++ $(CXXFLAGS) -o $(TARGET) $(SRCS)
 
 run : $(TARGET)
 	./$(TARGET)

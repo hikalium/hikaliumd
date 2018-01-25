@@ -32,7 +32,7 @@ bool endsWith(const char *s, const char *postfix) {
 };
 
 void HandleTCPClient(int sd) {
-  int kReceiveBufferSize = 512;
+  const int kReceiveBufferSize = 512;
   char echoBuffer[kReceiveBufferSize]; /* Buffer for echo string */
   int recvMsgSize;                     /* Size of received message */
 
@@ -72,6 +72,7 @@ int main(int argc, char *argv[]) {
   echoServAddr.sin_family = AF_INET;              /* Internet address family */
   echoServAddr.sin_addr.s_addr = htonl(INADDR_ANY); /* Any incoming interface */
   echoServAddr.sin_port = htons(kListenPort);       /* Local port */
+  printf("Port: %d\n", kListenPort);
 
   /* Bind to the local address */
   if (bind(servSock, (struct sockaddr *)&echoServAddr, sizeof(echoServAddr)) <
